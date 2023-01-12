@@ -12,6 +12,8 @@ let size = 200;
 let topX = 50;
 let topY = 50;
 
+let button;
+
 let winWidth = (size*3)+(topX+topY);
 let winHeight = (size*3)+(topX+topY);
 
@@ -30,16 +32,12 @@ function preload() {
 
 }
 
-
 /**
 Description of setup
 */
 function setup() {
     createCanvas(winWidth, winHeight);
     background(125);
-    let donkey = "DONKEY";
-    myArray.push(donkey);
-    myArray.push("PENIS");
 }
 
 function drawBoard() {
@@ -90,6 +88,35 @@ function drawBoard() {
     topY = 50;
 }
 
+function mousePressed() {
+    if (mouseX >= topX && mouseX <= topX+size) {
+        if(mouseY >= topY && mouseY <= topY+size){
+            console.log("1");
+        } else if(mouseY >= topY+size && mouseY <= topY+size*2){
+            console.log("2");
+        } else if(mouseY >= topY+size*2 && mouseY <= topY+size*3){
+            console.log("3");
+        }
+
+    } else if (mouseX >= topX+size && mouseX <= topX+size*2){
+        if(mouseY >= topY && mouseY <= topY+size){
+            console.log("4");
+        } else if(mouseY >= topY+size && mouseY <= topY+size*2){
+            console.log("5");
+        } else if(mouseY >= topY+size*2 && mouseY <= topY+size*3){
+            console.log("6");
+        }
+    }
+    else if (mouseX >= topX+size*2 && mouseX <= topX+size*3){
+        if(mouseY >= topY && mouseY <= topY+size){
+            console.log("7");   
+        } else if(mouseY >= topY+size && mouseY <= topY+size*2){
+            console.log("8");
+        } else if(mouseY >= topY+size*2 && mouseY <= topY+size*3){
+            console.log("9");
+        }
+    }
+}
 /**
 Description of draw()
 */

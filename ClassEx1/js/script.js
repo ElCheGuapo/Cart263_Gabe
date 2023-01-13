@@ -95,10 +95,31 @@ function drawBoard() {
 }
 
 function checkForWin() {
-    
+    let win = false;
+    for(var i = 0; i < 3; i ++) {
+        if(myArray[i][0] === myArray[i][1] && myArray[i][1] === myArray[i][2] && myArray[i][0] != " ") {
+            win = true;
+        } else if (myArray[0][i] === myArray[1][i] && myArray[1][i] === myArray[2][i] && myArray[0][i] != " ") {
+            win = true;
+        } else if (myArray[0][0] === myArray[1][1] && myArray[1][1] === myArray[2][2] && myArray[0][0] != " ") {
+            win = true;
+        } else if (myArray[0][2] === myArray[1][1] && myArray[1][1] === myArray[2][0] && myArray[0][2] != " ") {
+            win = true;
+        }
+    }
+    if(win) {
+        console.log("winner!"); 
+        myArray = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]
+        ];
+        win = false;
+    }
 }
 
 function mousePressed() {
+    checkForWin();
     if (mouseX >= topX && mouseX <= topX+size) {
         if(mouseY >= topY && mouseY <= topY+size){
             console.log("1");

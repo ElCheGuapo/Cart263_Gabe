@@ -11,6 +11,7 @@ author, and this description to match your project!
 let size = 200;
 let topX = 50;
 let topY = 50;
+let win = false;
 
 let currentTurn = 1;
 
@@ -95,7 +96,6 @@ function drawBoard() {
 }
 
 function checkForWin() {
-    let win = false;
     for(var i = 0; i < 3; i ++) {
         if(myArray[i][0] === myArray[i][1] && myArray[i][1] === myArray[i][2] && myArray[i][0] != " ") {
             win = true;
@@ -107,19 +107,15 @@ function checkForWin() {
             win = true;
         }
     }
-    if(win) {
-        console.log("winner!"); 
-        myArray = [
-            [" ", " ", " "],
-            [" ", " ", " "],
-            [" ", " ", " "]
-        ];
+}
+
+function keyPressed() {
+    if (keyCode === ENTER) {
         win = false;
-    }
+     }
 }
 
 function mousePressed() {
-    checkForWin();
     if (mouseX >= topX && mouseX <= topX+size) {
         if(mouseY >= topY && mouseY <= topY+size){
             console.log("1");
@@ -233,4 +229,20 @@ Description of draw()
 */
 function draw() {
     drawBoard();
+    checkForWin();
+    if(win) { 
+        myArray = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]
+        ];
+
+        push();
+        textSize(80);
+        textAlign(CENTER);
+        text("winner", winWidth/2, winHeight/2);
+        textSize(40);
+        text("press enter to restart", winWidth/2, winHeight/2+40);
+        pop();
+    }
 }
